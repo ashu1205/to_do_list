@@ -4,16 +4,31 @@ function addTask(value){
     console.log("task entered");
     // let taskCount=document.createElement('span');
     // taskCount.innerText=id;
+    let item=document.createElement('div');
+    item.classList.add("wrap");
+    let inner1=document.createElement('div');
+    let inner2=document.createElement('div');
+    inner1.classList.add("wrap");
+    inner2.classList.add("wrap");
 
     let newTask=document.createElement('li');
     newTask.classList.add("list-item");
-  
-    newTask.innerHTML=`${value}<i>\u274C</i>`
-    // id++;
+    // let dltTask=document.createElement('span');
+    inner2.innerHTML='&#10006';
+    // dltTask.classList.add("dltTask")
+    inner2.classList.add("remove");
     
+  
+    newTask.innerHTML=`${value}`;
+    // id++;
+    inner1.appendChild(newTask);
+    // inner2.appendChild(dltTask);
+    item.appendChild(inner1);
+
+    item.appendChild(inner2);
     let list=document.getElementById('list');
     // list.appendChild(taskCount);
-    list.appendChild(newTask);
+    list.appendChild(item);
 
     
 }
@@ -38,9 +53,9 @@ tasks.addEventListener("click",(event)=>{
     
 })
 
-tasks.addEventListener("dblclick",(e)=>{
-    if(e.target.classList.contains('list-item'))
-        e.target.remove();
+tasks.addEventListener("click",(e)=>{
+    if(e.target.classList.contains('remove'))
+        e.target.parentNode.remove();
 })
 
 
